@@ -28,7 +28,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
-          python EXTRACT/extract_nasa.py
-          python TRANSFORM/transform_nasa.py
-          python LOAD/load_nasa.py
+          python SCRIPTS/extract_nasa.py
+          python SCRIPTS/transform_nasa.py
+          python SCRIPTS/load_nasa.py
 
