@@ -28,8 +28,8 @@ if not files:
         "extracted_at": datetime.now()
     }])
 
-    output = "DATA/STAGED/nasa_apod_cleaned.csv"
-df.to_csv(output, index=False)
+        output = "DATA/STAGED/nasa_apod_cleaned.csv"
+    df.to_csv(output, index=False)
 
     print(f"Transformed NASA APOD saved to: {output}")
     return df
