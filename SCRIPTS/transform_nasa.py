@@ -8,8 +8,8 @@ def transform_nasa_data():
     os.makedirs("../DATA/STAGED", exist_ok=True)
 
     # Find latest raw NASA JSON
-files = sorted(glob.glob("DATA/RAW/nasa_apod_*.json"))
-if not files:
+    files = sorted(glob.glob("DATA/RAW/nasa_apod_*.json"))
+    if not files:
         raise FileNotFoundError("No NASA APOD raw JSON files found.")
 
     latest_file = files[-1]
