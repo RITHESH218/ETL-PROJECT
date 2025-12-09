@@ -24,7 +24,9 @@ def escape_string(value):
 
 
 def load_to_supabase():
-    csv_path = "../DATA/STAGED/nasa_apod_cleaned.csv"
+    # Compute CSV path relative to this script
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(BASE_DIR, "../DATA/STAGED/nasa_apod_cleaned.csv")
 
     if not os.path.exists(csv_path):
         raise FileNotFoundError(f"Missing file: {csv_path}")
@@ -68,6 +70,7 @@ def load_to_supabase():
         time.sleep(0.3)
 
     print("Finished loading NASA APOD data.")
+
 
 
 if __name__ == "__main__":
