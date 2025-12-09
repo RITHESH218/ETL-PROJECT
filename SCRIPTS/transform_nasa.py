@@ -5,10 +5,15 @@ import os
 from datetime import datetime
 
 def transform_nasa_data():
-    os.makedirs("../DATA/STAGED", exist_ok=True)
+    # Base dir = script folder
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    raw_dir = os.path.join(BASE_DIR, "../DATA/RAW")
+    staged_dir = os.path.join(BASE_DIR, "../DATA/STAGED")
+    os.makedirs(staged_dir, exist_ok=True)
 
     # Find latest raw NASA JSON
-    files = sorted(glob.glob("DATA/RAW/nasa_apod_*.json"))
+    files = sorted(glob.glob(os.path.join(raw_dir, "nasa_apod_*.json")))
     if not files:
         raise FileNotFoundError("No NASA APOD raw JSON files found.")
 
@@ -28,7 +33,7 @@ def transform_nasa_data():
         "extracted_at": datetime.now()
     }])
 
-    output = "DATA/STAGED/nasa_apod_cleaned.csv"
+    output = os.path.join(staged_dir, "nasa_apod_cleaned.csv")
     df.to_csv(output, index=False)
 
     print(f"Transformed NASA APOD saved to: {output}")
